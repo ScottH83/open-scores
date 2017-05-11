@@ -1,0 +1,46 @@
+// @mixin breakpoint media queries
+@mixin bp($point) {
+    @if $point == mobile {
+      @media screen and (min-width: 320px) { @content; }
+    }
+    @if $point == small {
+      @media screen and (min-width: 550px) { @content; }
+    }
+    @if $point == medium {
+        @media screen and (min-width: 670px) { @content; }
+    }
+    @else if $point == large {
+        @media screen and (min-width: 820px) { @content; }
+    }
+    @else if $point == full {
+        @media screen and (min-width: 1060px) { @content; }
+    }
+}
+
+// printing media query
+@mixin print {
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .score-title, .score-bpm, .score-to-print, .score-to-print * {
+      visibility: visible;
+    }
+    .score-title, .score-bpm {
+      position: absolute;
+      top: 0;
+    }
+    .score-title {
+      left: 0;
+    }
+    .score-bpm {
+      left: 12rem;
+    }
+    .score-to-print {
+      left: 0;
+      position: fixed;
+      top: 5rem;
+      transform: scale(.75);
+    }
+  }
+}
